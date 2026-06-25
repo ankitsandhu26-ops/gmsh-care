@@ -1,20 +1,15 @@
-// ─────────────────────────────────────────────────────────────────
-//  STEP 1: Replace the values below with YOUR Firebase project keys.
-//  See SETUP_GUIDE.md for instructions on where to find these.
-// ─────────────────────────────────────────────────────────────────
-
-import { initializeApp } from 'firebase/app'
-import { getDatabase } from 'firebase/database'
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey:            "PASTE_YOUR_API_KEY_HERE",
-  authDomain:        "PASTE_YOUR_AUTH_DOMAIN_HERE",
-  databaseURL:       "PASTE_YOUR_DATABASE_URL_HERE",
-  projectId:         "PASTE_YOUR_PROJECT_ID_HERE",
-  storageBucket:     "PASTE_YOUR_STORAGE_BUCKET_HERE",
-  messagingSenderId: "PASTE_YOUR_SENDER_ID_HERE",
-  appId:             "PASTE_YOUR_APP_ID_HERE",
-}
+  apiKey: "AIzaSyCooY-akdKUXbVLhbWL7O0JuJC6j7cx2_Q",
+  authDomain: "gmsh-care.firebaseapp.com",
+  databaseURL: "https://gmsh-care-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "gmsh-care",
+  storageBucket: "gmsh-care.firebasestorage.app",
+  messagingSenderId: "793001226465",
+  appId: "1:793001226465:web:bd80f4a5e1b93109a807a0"
+};
 
-const app = initializeApp(firebaseConfig)
-export const db = getDatabase(app)
+const app = initializeApp(firebaseConfig);
+export const db = getDatabase(app);
