@@ -1,0 +1,155 @@
+# GMSH Patient Care Portal — Deployment Guide
+# Complete setup in 4 steps (~30 minutes)
+# No coding knowledge required.
+
+═══════════════════════════════════════════════════════
+STEP 1 — Create Firebase Project (Free database)
+═══════════════════════════════════════════════════════
+
+Firebase stores all patient data and syncs across every
+phone and desktop in real time — completely free.
+
+1. Open: https://firebase.google.com
+2. Click  "Get started"  →  Sign in with Google account
+3. Click  "Create a project"
+4. Name it:  gmsh-care  →  Continue
+5. Disable Google Analytics (not needed)  →  "Create project"
+
+── Set up the database ──
+6. In left sidebar click  "Build"  →  "Realtime Database"
+7. Click  "Create Database"
+8. Choose  "Start in test mode"  →  "Enable"
+   (You can add security rules later)
+
+── Get your config keys ──
+9.  Click the gear icon ⚙ next to "Project Overview"
+10. Click  "Project settings"
+11. Scroll down to  "Your apps"
+12. Click the  </>  (Web) icon
+13. Register app name:  gmsh-care  →  "Register app"
+14. You will see a block of code like this:
+
+    const firebaseConfig = {
+      apiKey: "AIzaSy...",
+      authDomain: "gmsh-care.firebaseapp.com",
+      databaseURL: "https://gmsh-care-default-rtdb...",
+      projectId: "gmsh-care",
+      storageBucket: "gmsh-care.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "1:123456789:web:abc..."
+    };
+
+15. COPY all 7 values — you need them in Step 3.
+
+
+═══════════════════════════════════════════════════════
+STEP 2 — Upload files to GitHub (Free)
+═══════════════════════════════════════════════════════
+
+GitHub stores your app code so Vercel can deploy it.
+
+1. Open: https://github.com
+2. Click  "Sign up"  (free account)  →  verify email
+3. Click  "New repository"  (green button)
+4. Repository name:  gmsh-care
+5. Keep it  "Public"  →  "Create repository"
+6. Click  "uploading an existing file"  (link in the page)
+7. Drag and drop the entire  gmsh-care  folder contents:
+   - package.json
+   - vite.config.js
+   - index.html
+   - .gitignore
+   - src/  (folder with main.jsx, App.jsx, firebase.js)
+8. Scroll down  →  "Commit changes"
+
+
+═══════════════════════════════════════════════════════
+STEP 3 — Add your Firebase keys
+═══════════════════════════════════════════════════════
+
+1. In your GitHub repository, click on  src/firebase.js
+2. Click the pencil ✏ icon (Edit this file)
+3. Replace each placeholder with your real value from Step 1:
+
+   PASTE_YOUR_API_KEY_HERE         →  "AIzaSy..."
+   PASTE_YOUR_AUTH_DOMAIN_HERE     →  "gmsh-care.firebaseapp.com"
+   PASTE_YOUR_DATABASE_URL_HERE    →  "https://gmsh-care-default-rtdb..."
+   PASTE_YOUR_PROJECT_ID_HERE      →  "gmsh-care"
+   PASTE_YOUR_STORAGE_BUCKET_HERE  →  "gmsh-care.appspot.com"
+   PASTE_YOUR_SENDER_ID_HERE       →  "123456789"
+   PASTE_YOUR_APP_ID_HERE          →  "1:123..."
+
+4. Click  "Commit changes"
+
+
+═══════════════════════════════════════════════════════
+STEP 4 — Deploy on Vercel (Free)
+═══════════════════════════════════════════════════════
+
+Vercel gives you a permanent web link for the app.
+
+1. Open: https://vercel.com
+2. Click  "Sign Up"  →  "Continue with GitHub"
+3. Click  "Add New Project"
+4. Find  gmsh-care  in the list  →  "Import"
+5. Leave all settings as default
+6. Click  "Deploy"
+
+   Vercel will build and deploy in about 60 seconds.
+
+7. Your app link will appear, e.g.:
+   https://gmsh-care.vercel.app
+
+   ✅ Share this link with all 6 staff members.
+   ✅ Works on any phone or desktop browser.
+   ✅ All data syncs in real time across all devices.
+
+
+═══════════════════════════════════════════════════════
+OPTIONAL — Save to phone home screen (feels like an app)
+═══════════════════════════════════════════════════════
+
+iPhone (Safari):
+1. Open the link in Safari
+2. Tap the Share button (box with arrow)
+3. Tap  "Add to Home Screen"
+4. Tap  "Add"
+→ App icon appears on home screen, opens full screen
+
+Android (Chrome):
+1. Open the link in Chrome
+2. Tap the three dots menu ⋮
+3. Tap  "Add to Home screen"
+4. Tap  "Add"
+→ App icon appears on home screen, opens full screen
+
+
+═══════════════════════════════════════════════════════
+ACCOUNT CREDENTIALS
+═══════════════════════════════════════════════════════
+
+  Dr. Ankit Sandhu  (Director)    PIN: 0000
+  Dr. Aditya        (Physician)   PIN: 1234
+  Dr. Sachin        (Surgeon)     PIN: 2345
+  Gulshan           (Ward)        PIN: 3456
+  Vikas             (ICU)         PIN: 4567
+  Billing Team      (Billing)     PIN: 5678
+
+To change PINs: edit the pin values in src/App.jsx
+and commit the change on GitHub. Vercel redeploys
+automatically within 30 seconds.
+
+
+═══════════════════════════════════════════════════════
+SUPPORT
+═══════════════════════════════════════════════════════
+
+Firebase free tier limits (more than enough for GMSH):
+  - 100 simultaneous connections
+  - 1 GB data storage
+  - 10 GB / month data transfer
+
+For a custom domain (e.g. gmsh.in):
+  - Buy domain at GoDaddy / BigRock (~₹500/year)
+  - In Vercel → Project Settings → Domains → Add domain
+  - Follow the DNS instructions shown
